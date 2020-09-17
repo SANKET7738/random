@@ -1,6 +1,6 @@
 # Amazon review scrapper
 
-A javascript to scrape reviews from Amazon.
+A Script to scrape reviews from Amazon.
 
 ## Setup
 1. Clone the folder.  
