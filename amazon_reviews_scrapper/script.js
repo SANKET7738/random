@@ -1,17 +1,15 @@
-const puppeteer = require('puppeteer');
+const cheerio = require('cheerio');
+const got = require('got');
 
-async function scrapeProduct(url) {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.goto(url);
+const url = 'https://www.amazon.in/Apple-iPhone-11-64GB-Black/dp/B07XVMDRZY/ref=sr_1_1?dchild=1&keywords=iphone&qid=1600354773&s=electronics&sr=1-1';
 
-    const [el] = await page.$x('//*[@id="cm-cr-dp-review-list"]');
-    const txt = await el.getProperty('textContent');
-    const reviews = await txt.jsonValue();
-
-    console.log({ reviews });
-
-    browser.close();
-}
-
-scrapeProduct('https://www.amazon.in/Apple-iPhone-Pro-Max-64GB/dp/B07XVLMZHH/ref=sr_1_3?crid=3KN44KC41QC2U&dchild=1&keywords=iphone+11+pro&qid=1600165057&sprefix=ip%2Caps%2C305&sr=8-3');
+got(url).then(response => {
+    const $ = cheerio.load(response.body);
+    // Load the reviews
+    const reviews = $('.review');
+    reviews.each((i, review) => {
+        // Find the text children
+        const textReview = $(review).find('.review-text').text();
+        console.log(textReview);
+    })
+})
