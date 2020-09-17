@@ -11,3 +11,4 @@ A javascript to scrape reviews from Amazon.
 6. Now, run the node by ```node script.js```.
 
 ## Output
+![output-img](https://github.com/SANKET7738/random/blob/master/amazon_reviews_scrapper/output-img/output.png)
