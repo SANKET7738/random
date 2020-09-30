@@ -9,7 +9,7 @@ Scripts in JavaScript to send bulk connection requests
 
 ![endpoint](https://github.com/SANKET7738/random/blob/master/bulk_linkedin_requests/demo-imgs/endpoint.png)
 
-5. Open the code in the script.
+5. Open the script.
 6. You can change the message according to you at line 56.
 7. Now copy the whole code and paste it into the console section.
 8. Wait for the script to do its job.
