@@ -1,3 +1,4 @@
+//function to pause the code
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -30,6 +31,7 @@ async function connect(profile, i) {
         )[0];
 
         const h2 = document.getElementById("send-invite-modal").innerHTML;
+        // to select the profile 
         if (h2.trim() === "Connect") {
             const dismiss = document.querySelector("butto[aria-label^='Dismiss']");
             profile.parentNode.removeChild(profile);
@@ -50,6 +52,7 @@ async function connect(profile, i) {
             .replace(" to connect", "")
             .trim();
         const textarea = document.querySelector("#custom-message");
+        // message you want to send
         textarea.value = `Hey ${name}, Let's connect here on Linkedin :) `;
 
         const sendInvitationBtn = document.querySelector(
@@ -80,7 +83,8 @@ var profiles = [];
 async function run() {
     window.scrollTo(0, document.body.scrollHeight);
     await sleep(250);
-    profiles = document.querySelectorAll("li.search-result");
+    profiles = document.querySelectorAll("li.search-result"); // to select search results
+    // to select indivdual profiles
     profiles.forEach(profile => {
         const connectBtn = document.querySelector(
             `#${profile.id} button[aria-label^='Connect']`
@@ -89,7 +93,7 @@ async function run() {
             profile.parentNode.removeChild(profile);
         }
     });
-
+    // to check the last profile or no profiles
     if (profiles.length === 0) {
         console.log("Next Page >");
         const nextPageBtn = document.querySelector("button[aria-label^='Next]");
